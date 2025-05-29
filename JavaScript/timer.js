@@ -1,319 +1,266 @@
-//Getting All
 let hours = document.getElementById('hrs');
 let minutes = document.getElementById('mins');
 let seconds = document.getElementById('sec');
 let FullScreenContainer = document.getElementById('fullbutton');
 let EditContainer = document.getElementById('edit');
-let SideBigcontainer = document.getElementById('wholecontainer');
 let Sidebar = document.getElementById('Side');
 let TimerContainer = document.getElementById('promodoro');
 let TextaboveTimer = document.getElementById('TimerText');
 let StarTimerButt = document.getElementById('StartTimer');
-let UpArrow = document.getElementsByClassName('up');
-let DownArrow = document.getElementsByClassName('down');
 let ReSetTimer = document.getElementById('Reset');
-let Quote=document.getElementById('QuoteState');
-let QuoteBody=document.getElementById('quoateofthedaay');
-let WrittenTimer=document.getElementById('TimerTxx');
-let WrittenCringe=document.getElementById('TheCringeText');
+let Quote = document.getElementById('QuoteState');
+let QuoteBody = document.getElementById('quoateofthedaay');
+let WrittenTimer = document.getElementById('TimerTxx');
+let WrittenCringe = document.getElementById('TheCringeText');
+let timeDisplayContainer = document.getElementById('time-display-container');
+let buttonContainer = document.getElementById('button-container');
 
-//Buttons click
-let fullflag = true;
-FullScreenContainer.addEventListener('click', () => {
-    if (fullflag) {
-        TextaboveTimer.innerText = '';
-        Sidebar.style.display = "none";
-        EditContainer.style.display = "none";
-        StarTimerButt.style.display = "none";
-        ReSetTimer.style.display = "none";
-        QuoteBody.style.display = "none";
-        WrittenTimer.style.display = "none";
-        WrittenCringe.style.display = "none";
-        
-        TimerContainer.style.top = "25vh";
-        TimerContainer.style.left = "10vw";
-
-        FullScreenContainer.style.left = "45.5vw";
-        FullScreenContainer.style.top = "70vh";
-        FullScreenContainer.innerText = "Exit Full Screen";
-
-    }
-    else {
-        TextaboveTimer.innerText = 'POMODORO TIMER';
-        Sidebar.style.display = "inline-block";
-        EditContainer.style.display = "flex";
-        StarTimerButt.style.display = "flex";
-        ReSetTimer.style.display = "flex";
-        QuoteBody.style.display = "inline-block";
-        WrittenCringe.style.display = "";
-        WrittenTimer.style.display = "inline-block";
-        
-        WrittenTimer.style.top = "2vh";
-        TimerContainer.style.top = "0vh";
-        TimerContainer.style.left = "20vw";
-        FullScreenContainer.style.left = "60vw";
-        FullScreenContainer.style.top = "53vh";
-        FullScreenContainer.innerText = "Full Screen";
-    }
-    fullflag = !fullflag;
-})
-
-let editflag = true;
-EditContainer.addEventListener('click', () => {
-    if (editflag) {
-        TextaboveTimer.innerText = '';
-        Sidebar.style.display = "none";
-        FullScreenContainer.style.opacity = 0;
-        StarTimerButt.style.display = "none";
-        ReSetTimer.style.display = "none";
-        QuoteBody.style.display = "none";
-        WrittenTimer.style.display = "none";
-        WrittenCringe.style.display = "none";
-        
-        document.body.style.overflow = 'hidden';
-
-        Array.from(UpArrow).forEach(up => {
-            up.style.display = "inline-block";
-        })
-
-        Array.from(DownArrow).forEach(up => {
-            up.style.display = "inline-block";
-        })
-
-        TimerContainer.style.top = "20vh";
-        TimerContainer.style.left = "10vw";
-
-        EditContainer.style.left = "45.5vw";
-        EditContainer.style.top = "75vh";
-        EditContainer.innerText = "Exit Edit Screen";
-
-        WheelUpdown();
-    }
-    else {
-        TextaboveTimer.innerText = 'POMODORO TIMER';
-        Sidebar.style.display = "inline-block";
-        FullScreenContainer.style.opacity = 1;
-        StarTimerButt.style.display = "flex";
-        ReSetTimer.style.display = "flex";
-        document.body.style.overflow = 'hidden';
-        QuoteBody.style.display = "inline-block";
-        WrittenCringe.style.display = "";
-        WrittenTimer.style.display = "inline-block";
-        
-        Array.from(UpArrow).forEach(up2 => {
-            up2.style.display = "none";
-        })
-
-        Array.from(DownArrow).forEach(up => {
-            up.style.display = "none";
-        })
-
-        TimerContainer.style.top = "0vh";
-        TimerContainer.style.left = "20vw";
-        EditContainer.style.right = "27.3vw";
-        EditContainer.style.left = "";
-        EditContainer.style.top = "52vh";
-        EditContainer.innerText = "Edit Timer";
-    }
-    editflag = !editflag;
-})
-
-
-//Variables for timer
 let seccng = 0;
 let mincng = 0;
 let hrscng = 0;
 
-//Adding Setting Up/Down events
-UpArrow[0].addEventListener('click', () => {
-    if (seccng < 59 && seccng >= 0) {
-        seccng++;
-        seconds.innerText = String(seccng).padStart(2, "00");
-    }
-})
-UpArrow[1].addEventListener('click', () => {
-    if (mincng < 59 && mincng >= 0) {
-        mincng++;
-        minutes.innerText = String(mincng).padStart(2, "00");
-    }
-})
-UpArrow[2].addEventListener('click', () => {
-
-    hrscng++;
-    hours.innerText = String(hrscng).padStart(2, "00");
-
-})
-
-DownArrow[0].addEventListener('click', () => {
-    if (seccng <=59 && seccng > 0) {
-        seccng--;
-        seconds.innerText = String(seccng).padStart(2, "00");
-    }
-})
-DownArrow[1].addEventListener('click', () => {
-    if (mincng <=59 && mincng > 0) {
-        mincng--;
-        minutes.innerText = String(mincng).padStart(2, "00");
-    }
-})
-DownArrow[2].addEventListener('click', () => {
-    if (hrscng > 0) {
-        hrscng--;
-        hours.innerText = String(hrscng).padStart(2, "00");
-    }
-
-})
-
-//Wheel For Timer
-function WheelUpdown() {
-    hours.addEventListener('wheel', (eve) => {
-        if (eve.deltaY < 0) {
-            hrscng++;
-            hours.innerText = String(hrscng).padStart(2, "00");
-        }
-        else {
-            if (hrscng > 0) {
-                hrscng--;
-                hours.innerText = String(hrscng).padStart(2, "00");
-            }
-        }
-    })
-
-    minutes.addEventListener('wheel', (eve) => {
-        if (eve.deltaY < 0) {
-            if (mincng < 59 && mincng >= 0) {
-                mincng++;
-                minutes.innerText = String(mincng).padStart(2, "00");
-            }
-        }
-
-        else {
-            if (mincng <=59 && mincng > 0) {
-                mincng--;
-                minutes.innerText = String(mincng).padStart(2, "00");
-            }
-        }
-    })
-
-    seconds.addEventListener('wheel', (eve) => {
-        if (eve.deltaY < 0) {
-            if (seccng < 59 && seccng >= 0) {
-                seccng++;
-                seconds.innerText = String(seccng).padStart(2, "00");
-            }
-        }
-
-        else {
-            if (seccng <=59 && seccng > 0) {
-                seccng--;
-                seconds.innerText = String(seccng).padStart(2, "00");
-            }
-        }
-    })
-
-}
-
-//Main Timer Logic
-
-//Timer Variables
 let SecText = 0;
 let MinText = 0;
 let HrsText = 0;
 
 let SetTimer = null;
+let StartFlag = true;
+let fullflag = true;
+let editflag = true;
+
+function updateDisplay() {
+    hours.innerText = String(hrscng).padStart(2, "0");
+    minutes.innerText = String(mincng).padStart(2, "0");
+    seconds.innerText = String(seccng).padStart(2, "0");
+}
+
 function BackTimer() {
     if (SecText === 0 && MinText === 0 && HrsText === 0) {
         clearInterval(SetTimer);
         SetTimer = null;
         StarTimerButt.innerText = "Start Timer";
         StartFlag = true;
+        EditContainer.style.pointerEvents = 'auto';
         return;
-    }
-    else {
+    } else {
         if (SecText > 0) {
             SecText--;
-        }
-
-        else {
-            if (MinText > 0 || HrsText > 0) {
+        } else {
+            if (MinText > 0) {
+                MinText--;
                 SecText = 59;
-                if (MinText > 0) {
-                    MinText--;
-                }
-                else {
-                    if (HrsText > 0) {
-                        MinText = 59;
-                        HrsText--;
-                    }
+            } else {
+                if (HrsText > 0) {
+                    HrsText--;
+                    MinText = 59;
+                    SecText = 59;
                 }
             }
-
         }
-
     }
-
-    hours.innerText = String(HrsText).padStart(2, "00");
-    minutes.innerText = String(MinText).padStart(2, "00");
-    seconds.innerText = String(SecText).padStart(2, "00");
+    hours.innerText = String(HrsText).padStart(2, "0");
+    minutes.innerText = String(MinText).padStart(2, "0");
+    seconds.innerText = String(SecText).padStart(2, "0");
 }
 
-let StartFlag = true;
 StarTimerButt.addEventListener('click', () => {
-    SecText = seccng;
-    MinText = mincng;
-    HrsText = hrscng;
-
     if (StartFlag) {
+        SecText = seccng;
+        MinText = mincng;
+        HrsText = hrscng;
+
+        if (SecText === 0 && MinText === 0 && HrsText === 0) {
+            alert("Please set a time before starting the timer!");
+            return;
+        }
+
         StarTimerButt.innerText = "Stop Timer";
         SetTimer = setInterval(BackTimer, 1000);
-    }
-    else {
+        EditContainer.style.pointerEvents = 'none'; 
+        if (!editflag) {
+             EditContainer.click();
+        }
+    } else {
         StarTimerButt.innerText = "Start Timer";
         clearInterval(SetTimer);
         SetTimer = null;
         seccng = parseInt(seconds.innerText);
         mincng = parseInt(minutes.innerText);
         hrscng = parseInt(hours.innerText);
+        EditContainer.style.pointerEvents = 'auto';
     }
     StartFlag = !StartFlag;
-})
+});
 
-
-//Reset Timer
-function TimerReset() {
-    StarTimerButt.innerText = "Start Timer";
+ReSetTimer.addEventListener('click', () => {
     clearInterval(SetTimer);
     SetTimer = null;
     StartFlag = true;
+    StarTimerButt.innerText = "Start Timer";
+
     seccng = 0;
     mincng = 0;
     hrscng = 0;
 
-    SecText = seccng;
-    MinText = mincng;
-    HrsText = hrscng;
+    SecText = 0;
+    MinText = 0;
+    HrsText = 0;
 
-    hours.innerText = String(00).padStart(2, "00");
-    minutes.innerText = String(00).padStart(2, "00");
-    seconds.innerText = String(00).padStart(2, "00");
+    updateDisplay();
+    EditContainer.style.pointerEvents = 'auto';
+    if (!editflag) {
+        EditContainer.click();
+    }
+});
+
+FullScreenContainer.addEventListener('click', () => {
+    if (fullflag) {
+        Sidebar.style.display = "none";
+        QuoteBody.style.display = "none";
+        TextaboveTimer.style.display = "none";
+        WrittenCringe.style.display = "none";
+        WrittenTimer.style.display = "none";
+        EditContainer.style.display = "none";
+        TimerContainer.classList.add('full-screen-mode');
+        buttonContainer.style.gridTemplateColumns = "repeat(2, 220px)";
+        FullScreenContainer.classList.add('absolute-positioned');
+        FullScreenContainer.innerText = "Exit Full Screen";
+    } else {
+        Sidebar.style.display = "flex";
+        QuoteBody.style.display = "block";
+        TextaboveTimer.style.display = "block";
+        WrittenCringe.style.display = "block";
+        WrittenTimer.style.display = "block";
+        EditContainer.style.display = "flex";
+        TimerContainer.classList.remove('full-screen-mode');
+        buttonContainer.style.gridTemplateColumns = "repeat(2, 200px)";
+        FullScreenContainer.classList.remove('absolute-positioned');
+        FullScreenContainer.innerText = "Full Screen";
+    }
+    fullflag = !fullflag;
+});
+
+EditContainer.addEventListener('click', () => {
+    if (StartFlag === false && editflag) {
+        alert("Please stop the timer before entering edit mode.");
+        return;
+    }
+
+    if (editflag) {
+        // Show tip alert when entering edit mode
+        alert("Tip: Scroll to adjust the time settings.");
+
+        TextaboveTimer.style.display = "none";
+        Sidebar.style.display = "none";
+        FullScreenContainer.style.opacity = 0;
+        FullScreenContainer.style.pointerEvents = 'none';
+        StarTimerButt.style.display = "none";
+        ReSetTimer.style.display = "none";
+        QuoteBody.style.display = "none";
+        WrittenTimer.style.display = "none";
+        WrittenCringe.style.display = "none";
+        TimerContainer.classList.add('edit-mode-active');
+        document.body.style.overflow = 'hidden';
+        document.querySelectorAll('.time-block').forEach(block => {
+            block.classList.add('edit-mode');
+        });
+        EditContainer.classList.add('absolute-positioned');
+        EditContainer.innerText = "Exit Edit Screen";
+        WheelUpdown();
+    } else {
+        TextaboveTimer.style.display = "block";
+        Sidebar.style.display = "flex";
+        FullScreenContainer.style.opacity = 1;
+        FullScreenContainer.style.pointerEvents = 'auto';
+        StarTimerButt.style.display = "flex";
+        ReSetTimer.style.display = "flex";
+        QuoteBody.style.display = "block";
+        WrittenCringe.style.display = "block";
+        WrittenTimer.style.display = "block";
+        TimerContainer.classList.remove('edit-mode-active');
+        document.body.style.overflow = 'hidden';
+        document.querySelectorAll('.time-block').forEach(block => {
+            block.classList.remove('edit-mode');
+        });
+        EditContainer.classList.remove('absolute-positioned');
+        EditContainer.innerText = "Edit Timer";
+    }
+    editflag = !editflag;
+});
+
+function handleWheel(eve) {
+    eve.preventDefault();
+    if (editflag) return; 
+
+    let targetId = eve.target.id;
+    let delta = eve.deltaY < 0 ? 1 : -1;
+
+    switch (targetId) {
+        case 'hrs':
+            hrscng += delta;
+            if (hrscng < 0) hrscng = 0;
+            break;
+        case 'mins':
+            mincng += delta;
+            if (mincng > 59) {
+                mincng = 0;
+                hrscng++;
+            } else if (mincng < 0) {
+                mincng = 59;
+                if (hrscng > 0) hrscng--; else mincng = 0;
+            }
+            break;
+        case 'sec':
+            seccng += delta;
+            if (seccng > 59) {
+                seccng = 0;
+                mincng++;
+                if (mincng > 59) {
+                    mincng = 0;
+                    hrscng++;
+                }
+            } else if (seccng < 0) {
+                seccng = 59;
+                mincng--;
+                if (mincng < 0) {
+                    mincng = 59;
+                    if (hrscng > 0) hrscng--; else mincng = 0;
+                }
+            }
+            break;
+    }
+    updateDisplay();
 }
 
-ReSetTimer.addEventListener('click', () => {
-    TimerReset();
-})
+let wheelListenersAttached = false;
+function WheelUpdown() {
+    if (!wheelListenersAttached) {
+        hours.addEventListener('wheel', handleWheel);
+        minutes.addEventListener('wheel', handleWheel);
+        seconds.addEventListener('wheel', handleWheel);
+        wheelListenersAttached = true;
+    }
+}
 
+document.addEventListener('DOMContentLoaded', () => {
+    updateDisplay();
+    GettingRandomQuotes(arrayOFquote.length - 1, 0);
+});
 
-//Random Quote display
 let arrayOFquote = [
-  '"Dekhi jayegi"','"Dekh lenge"',
-  '"phele hum sochte hai ki jo hoga dekha jayega pr phir jo hota hau woh dekha nhi jata"',
-  '"Kar doosron ka bhala aur kehla nalla"'
+    '"The key is not to prioritize whats on your schedule but to schedule your priorities" ~ Stephen Covey',
+    '"Productivity is being able to do things that you were never able to do before." ~ Franz Kafka',
+    '"The best way to predict the future is to create it." ~ Peter Drucker',
+    '"Your mind is for having ideas, not holding them." ~ David Allen',
+    '"It is not enough to be busy; so are the ants. The question is: What are we busy about?" ~ Henry David Thoreau',
+    '"Don’t confuse motion with progress." ~ Alfred A. Montapert',
+    '"The bad news is time flies. The good news is you\'re the pilot." ~ Michael Altshuler',
+    '"The secret of getting ahead is getting started." ~ Mark Twain',
+    '"Action is the foundational key to all success." ~ Pablo Picasso',
+    '"The truly efficient man is the one who manages to do many things by doing one thing at a time." ~ Arnold Bennett'
 ];
 
 function GettingRandomQuotes(max, min) {
-  let RandomX = Math.floor(Math.random() * (max - min + 1)) + min;
-  Quote.innerText=arrayOFquote[RandomX];
+    let RandomX = Math.floor(Math.random() * (max - min + 1)) + min;
+    Quote.innerText = arrayOFquote[RandomX];
 }
-
-GettingRandomQuotes(arrayOFquote.length - 1, 0);
-
