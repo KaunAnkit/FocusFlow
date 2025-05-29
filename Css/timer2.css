@@ -235,7 +235,7 @@ body {
     width: 21vh;
     position: relative;
     bottom: 0vh;
-    background-image: url('/Photos/uparrow.svg');
+    background-image: url('https://kaunankit.github.io/FocusFlow/Photos/uparrow.svg');
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
@@ -262,7 +262,7 @@ body {
     width: 21vh;
     position: relative;
     top: 32vh;
-    background-image: url('/Photos/downarrow.svg');
+    background-image: url('https://kaunankit.github.io/FocusFlow/Photos/downarrow.svg');
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
