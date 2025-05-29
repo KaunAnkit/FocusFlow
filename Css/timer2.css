@@ -7,18 +7,22 @@
 
 body {
     background-color: #f0f4f8;
+    overflow-y: hidden;
 }
 
 .BigContainer {
     display: flex;
     min-height: 100vh;
+    background-color: #f9f9f9;
+
 }
 
 .sidebar {
-    width: 300px;
+    width: 22vw;
     background-color: #ffffff;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     padding: 20px;
+    display: inline-block;
 }
 
 .sidebar h1 {
@@ -49,6 +53,10 @@ body {
     cursor: pointer;
 }
 
+#PomoTimer {
+    background-color: #e0f7f1;
+}
+
 .icon1 span {
     font-size: 22px;
     color: #555;
@@ -64,36 +72,9 @@ body {
     background-color: #e0f7f1;
 }
 
-.container {
-    flex: 1;
-    padding: 40px;
-    background-color: #f9f9f9;
-}
 
-.container h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: #333;
-}
 
-.container h3 {
-    font-size: 20px;
-    color: #555;
-    margin-top: 20px;
-}
-.container h4 {
-    
-    font-size: 16px;
-    color: #847b7b;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.container h5{
-    font-style: italic;
-    color: #777;
-    margin-bottom: 20px;
-}
+/*Main Timer Body*/
 #promodoro {
     height: 20vh;
     width: 78vw;
@@ -105,8 +86,34 @@ body {
     left: 20vw;
 }
 
+#TimerTxx {
+    font-size: 4vh;
+    position: relative;
+    top: 2vh;
+    right: 2vw;
+    color: #555;
+    font-weight: bolder;
+}
+
+#TimerText {
+    position: relative;
+    bottom: 3vh;
+    right: 2vw;
+    color: #333;
+}
+
+#TheCringeText {
+    font-size: 2.5vh;
+    font-style: italic;
+    font-weight: bold;
+    position: relative;
+    bottom: 1.8vh;
+    right: 2vw;
+    color: #777;
+}
+
 .time {
-    top: 20vh;
+    top: 25vh;
     position: absolute;
     height: 10vh;
     width: 22vw;
@@ -114,7 +121,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 1px;
+    border: solid 1px none;
     border-radius: 2vh;
     font-size: 9vh;
     cursor: pointer;
@@ -125,37 +132,33 @@ body {
 }
 
 #hrs {
-    border: #efeaea;
-    outline: none;
-    margin: 40px;
-    left: 2vw;
+    left: 5vw;
 }
 
 #mins {
-    border: #efeaea;
-    margin: 40px;
-    left: 27vw;
+    left: 30vw;
 }
 
 #sec {
-    border: #efeaea;
-    margin: 40px;
-    left: 52vw;
+    left: 55vw;
 }
 
 .Thebuttons {
-    margin-top: 50px;
     position: absolute;
     top: 40vh;
     height: 6vh;
-    width: 20vw;
-    background-color: #333;
-    border: 2px solid;
-    border-radius: 10vh;
-    font-size: 3vh;
+    font-size: medium;
+    font-weight: 600;
+    width: 25vh;
+    left: 47vw;
+    background-color: #69d1ae;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
     z-index: 1;
 }
 
@@ -165,77 +168,31 @@ body {
 }
 
 #edit {
-    margin-top: 15vh;
-    left: 47vw;
-    width: 25vh;
-    background-color: #69d1ae;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-    font-size: medium;
-    font-weight: 600;
+    top: 52vh;
+    right: 27.3vw;
 }
 
 #fullbutton {
-    margin-top: 15vh;
+    top: 52vh;
     left: 60vw;
-    right: 2vw;
-    background-color: #69d1ae;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-    font-size: medium;
-    font-weight: 600;
-    width: 25vh;
 }
 
 #StartTimer {
-    font-size: medium;
-    font-weight: 600;
-    width: 25vh;
-    left: 47vw;
-    background-color: #69d1ae;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
+    right: 27.3vw;
+    top: 45vh;
 }
 
 #Reset {
-    
     left: 60vw;
-    z-index: 0;
-    width: 17vh;
-    background-color: #69d1ae;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-    font-size: medium;
-    font-weight: 600;
-    width: 25vh;
+    top: 45vh;
 }
 
 .up {
     height: 9vh;
     width: 21vh;
     position: relative;
-    bottom: 0vh;
-    background-image: url('https://kaunankit.github.io/FocusFlow/Photos/uparrow.svg');
+    top: 6vh;
+    background-image: url('uparrow.svg');
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
@@ -261,8 +218,8 @@ body {
     height: 9vh;
     width: 21vh;
     position: relative;
-    top: 32vh;
-    background-image: url('https://kaunankit.github.io/FocusFlow/Photos/downarrow.svg');
+    top: 35vh;
+    background-image: url('downarrow.svg');
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
@@ -284,28 +241,29 @@ body {
     right: 47vw;
 }
 
-  
+#quoateofthedaay {
+    height: 15vh;
+    width: 70vw;
+    position: relative;
+    bottom: -76vh;
+    left: 9vh;
+    display: inline-block;
+    border-radius: 5vh;
+}
 
-.clockName{
-    display: flex;
-    margin-top: 110px;
-    font-size: larger;
-    
+
+#QuoteState {
+    position: relative;
+    bottom: 6vh;
+    left: 1vw;
+    font-size: 18px;
+    color: #847b7b;
+    font-weight: bold;
 }
-.hour{
-    margin-left: 125px;
-    margin-right: 290px;
-}
-.minute{
-    margin-right:278px; 
-}
-.quoteeee {
-    margin-top: 550px;
-    font-size: 20px;
-    font-weight: 500;
-    color: #444;
-    text-align: center;
-}
-.container h3:last-of-type {
-    margin-top: 150px; 
+
+#QuoteHead {
+    position: relative;
+    bottom: 8vh;
+    color: #555;
+    font-size: 4vh;
 }
