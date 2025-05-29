@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://github.com/KaunAnkit/FocusFlow/blob/main/Css/timer2.css">
+    <link rel="stylesheet" href="/Css/timer2.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>FocusFlow</title>
 </head>
@@ -15,20 +15,24 @@
             <h1>FocusFlow</h1>
             <h6>Productivity Hub</h6>
             <div class="UI">
-                <div class="icon1">
-                    <span class="material-symbols-outlined">home</span>
-                    <p>Dashboard</p>
-                </div>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">home</span>
+                        <p>Dashboard</p>
+                    </div>
+                </a>
                 <a href="To-Do.html" style="text-decoration: none; color: inherit;">
                     <div class="icon1">
                         <span class="material-symbols-outlined">list</span>
                         <p>To-Do List</p>
                     </div>
                 </a>
-                <div class="icon1">
-                    <span class="material-symbols-outlined">text_snippet</span>
-                    <p>Notes</p>
-                </div>
+                <a href="habits.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">text_snippet</span>
+                        <p>Habits</p>
+                    </div>
+                </a>
                 <div class="icon1" id="PomoTimer">
                     <span class="material-symbols-outlined">timer</span>
                     <p>Pomodoro Timer</p>
@@ -39,34 +43,41 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="promodoro" class="timer">
             <h3 id="TimerText">POMODORO TIMER</h3>
             <p id="TheCringeText">Build better routines — stay on track with daily must-do tasks that reset automatically each day.</p>
             <p id="TimerTxx">TIMER</p>
-            <span class="time" id="hrs">00</span>
-            <span class="time" id="mins">00</span>
-            <span class="time" id="sec">00</span>
-
-            <div class="up" id="secup"></div>
-            <div class="up" id="minup"></div>
-            <div class="up" id="hrsup"></div>
             
-            <div class="down" id="secdown"></div>
-            <div class="down" id="mindown"></div>
-            <div class="down" id="hrsdown"></div>
-        </div>
-        <div class="Thebuttons" id="edit">Edit Timer</div>
-        <div class="Thebuttons" id="fullbutton">Full Screen</div>
-        <div class="Thebuttons" id="StartTimer">Start Timer</div>
-        <div class="Thebuttons" id="Reset">Reset Timer</div>
+            <div id="time-display-container">
+                <div class="time-block">
+                    <div id="hrs" class="time">00</div>
+                    <span class="time-label">Hour</span>
+                </div>
+                <div class="time-block">
+                    <div id="mins" class="time">00</div>
+                    <span class="time-label">Minute</span>
+                </div>
+                <div class="time-block">
+                    <div id="sec" class="time">00</div>
+                    <span class="time-label">Second</span>
+                </div>
+            </div>
 
-        <div class="quote" id="quoateofthedaay">
-            <h2 id="QuoteHead">QUOTE OF THE DAY</h2>
-            <p id="QuoteState"></p>
+            <div id="button-container">
+                <div class="Thebuttons" id="StartTimer">Start Timer</div>
+                <div class="Thebuttons" id="Reset">Reset Timer</div>
+                <div class="Thebuttons" id="edit">Edit Timer</div>
+                <div class="Thebuttons" id="fullbutton">Full Screen</div>
+            </div>
+
+            <div class="quote" id="quoateofthedaay">
+                <h2 id="QuoteHead">QUOTE OF THE DAY</h2>
+                <p id="QuoteState">"The key is not to prioritize whats on your schedule but to schedule your priorities" ~ Stephen Covey</p>
+            </div>
         </div>
     </div>
 </body>
-<script src="https://github.com/KaunAnkit/FocusFlow/blob/main/JavaScript/timer.js"></script>
+<script src="/JavaScript/timer.js"></script>
 
 </html>
