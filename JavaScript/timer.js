@@ -14,6 +14,8 @@ let DownArrow = document.getElementsByClassName('down');
 let ReSetTimer = document.getElementById('Reset');
 let Quote=document.getElementById('QuoteState');
 let QuoteBody=document.getElementById('quoateofthedaay');
+let WrittenTimer=document.getElementById('TimerTxx');
+let WrittenCringe=document.getElementById('TheCringeText');
 
 //Buttons click
 let fullflag = true;
@@ -25,28 +27,32 @@ FullScreenContainer.addEventListener('click', () => {
         StarTimerButt.style.display = "none";
         ReSetTimer.style.display = "none";
         QuoteBody.style.display = "none";
+        WrittenTimer.style.display = "none";
+        WrittenCringe.style.display = "none";
         
         TimerContainer.style.top = "25vh";
         TimerContainer.style.left = "10vw";
 
-        FullScreenContainer.style.right = "37.5vw";
-        FullScreenContainer.style.top = "65vh";
+        FullScreenContainer.style.left = "45.5vw";
+        FullScreenContainer.style.top = "70vh";
         FullScreenContainer.innerText = "Exit Full Screen";
 
     }
     else {
-        TextaboveTimer.innerText = 'Pomodoro Timer';
+        TextaboveTimer.innerText = 'POMODORO TIMER';
         Sidebar.style.display = "inline-block";
         EditContainer.style.display = "flex";
         StarTimerButt.style.display = "flex";
         ReSetTimer.style.display = "flex";
         QuoteBody.style.display = "inline-block";
-
+        WrittenCringe.style.display = "";
+        WrittenTimer.style.display = "inline-block";
+        
+        WrittenTimer.style.top = "2vh";
         TimerContainer.style.top = "0vh";
         TimerContainer.style.left = "20vw";
-
-        FullScreenContainer.style.right = "2vw";
-        FullScreenContainer.style.top = "40vh";
+        FullScreenContainer.style.left = "60vw";
+        FullScreenContainer.style.top = "53vh";
         FullScreenContainer.innerText = "Full Screen";
     }
     fullflag = !fullflag;
@@ -61,6 +67,8 @@ EditContainer.addEventListener('click', () => {
         StarTimerButt.style.display = "none";
         ReSetTimer.style.display = "none";
         QuoteBody.style.display = "none";
+        WrittenTimer.style.display = "none";
+        WrittenCringe.style.display = "none";
         
         document.body.style.overflow = 'hidden';
 
@@ -75,21 +83,22 @@ EditContainer.addEventListener('click', () => {
         TimerContainer.style.top = "20vh";
         TimerContainer.style.left = "10vw";
 
-        EditContainer.style.right = "37.5vw";
+        EditContainer.style.left = "45.5vw";
         EditContainer.style.top = "75vh";
         EditContainer.innerText = "Exit Edit Screen";
 
         WheelUpdown();
     }
     else {
-        TextaboveTimer.innerText = 'Pomodoro Timer';
+        TextaboveTimer.innerText = 'POMODORO TIMER';
         Sidebar.style.display = "inline-block";
         FullScreenContainer.style.opacity = 1;
         StarTimerButt.style.display = "flex";
         ReSetTimer.style.display = "flex";
         document.body.style.overflow = 'hidden';
         QuoteBody.style.display = "inline-block";
-        
+        WrittenCringe.style.display = "";
+        WrittenTimer.style.display = "inline-block";
         
         Array.from(UpArrow).forEach(up2 => {
             up2.style.display = "none";
@@ -101,9 +110,9 @@ EditContainer.addEventListener('click', () => {
 
         TimerContainer.style.top = "0vh";
         TimerContainer.style.left = "20vw";
-
-        EditContainer.style.right = "52vw";
-        EditContainer.style.top = "40vh";
+        EditContainer.style.right = "27.3vw";
+        EditContainer.style.left = "";
+        EditContainer.style.top = "52vh";
         EditContainer.innerText = "Edit Timer";
     }
     editflag = !editflag;
@@ -179,7 +188,7 @@ function WheelUpdown() {
         }
 
         else {
-            if (mincng <=59 && mincng >= 0) {
+            if (mincng <=59 && mincng > 0) {
                 mincng--;
                 minutes.innerText = String(mincng).padStart(2, "00");
             }
@@ -195,7 +204,7 @@ function WheelUpdown() {
         }
 
         else {
-            if (seccng <=59 && seccng >= 0) {
+            if (seccng <=59 && seccng > 0) {
                 seccng--;
                 seconds.innerText = String(seccng).padStart(2, "00");
             }
@@ -296,9 +305,9 @@ ReSetTimer.addEventListener('click', () => {
 
 //Random Quote display
 let arrayOFquote = [
-  "Dekhi jayegi","Dekh lenge",
-  "phele hum sochte hai ki jo hoga dekha jayega pr phir jo hota hau woh dekha nhi jata",
-  "Kar doosron ka bhala aur kehla nalla"
+  '"Dekhi jayegi"','"Dekh lenge"',
+  '"phele hum sochte hai ki jo hoga dekha jayega pr phir jo hota hau woh dekha nhi jata"',
+  '"Kar doosron ka bhala aur kehla nalla"'
 ];
 
 function GettingRandomQuotes(max, min) {
