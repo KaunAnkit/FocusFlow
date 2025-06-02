@@ -29,12 +29,12 @@
                         <p>Habits</p>
                     </div>
                 </a>
-                <a href="timer.html" style="text-decoration: none; color: inherit;">                 
+                <a href="timer.html" style="text-decoration: none; color: inherit;">
                     <div class="icon1">
                         <span class="material-symbols-outlined">timer</span>
                         <p>Pomodoro Timer</p>
                     </div>
-                </a>    
+                </a>
                 <div class="icon1">
                     <span class="material-symbols-outlined">settings</span>
                     <p>Settings</p>
@@ -43,18 +43,69 @@
         </div>
         <div class="container">
             <h1>SETTINGS</h1>
-            <h3>Appearence</h3>
-            <div class="Dark-Mode" id="DarkMode">
-                <h5 id="subsubHeading">Dark Mode</h5>
+            <h3>Appearance</h3>
+            <div class="setting-block">
+                <div class="setting-text" id="DarkMode">
+                    <h5>Dark Mode</h5>
+                    <p class="subsubPara">Adjust the brightness of the app</p>
+                </div>
                 <label class="switch" id="switch">
                     <input type="checkbox" id="checkbox">
                     <span class="slider"></span>
                 </label>
             </div>
-            <p id ="subsubPara">Click on the button to switch to dark mode</p>
+
+            <h3>Focus Mode</h3>
+            <div class="setting-block">
+                <div class="setting-text">
+                    <h5>Focus Mode</h5>
+                    <p class="subsubPara">Enable focus mode to minimize distractions</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="focusModeToggle" class="tempBeta">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <h3>Notifications</h3>
+            <div class="setting-block">
+                <div class="setting-text">
+                    <h5>Task Reminders</h5>
+                    <p class="subsubPara">Receive reminders for upcoming tasks</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="taskReminderToggle" class="tempBeta">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-block">
+                <div class="setting-text">
+                    <h5>Habit Reminders</h5>
+                    <p class="subsubPara">Get notified when a habit is due</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="habitReminderToggle" class="tempBeta">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <h3>Account</h3>
+            <div class="setting-block">
+                <div class="setting-text">
+                    <h5>Change Password</h5>
+                </div>
+                <span class="material-symbols-outlined" style="color: #555;">chevron_right</span>
+            </div>
+            <div class="setting-block">
+                <div class="setting-text">
+                    <h5>Delete Account</h5>
+                </div>
+                <span class="material-symbols-outlined" style="color: #555;">chevron_right</span>
+            </div>
+
         </div>
         <script src="https://kaunankit.github.io/FocusFlow/JavaScript/settings.js"></script>
-        
+
     </div>
 </body>
 </html>
