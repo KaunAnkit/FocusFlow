@@ -7,18 +7,20 @@
 
 body {
     background-color: #f0f4f8;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .BigContainer {
     display: flex;
     min-height: 100vh;
-}   
+}
 
 .sidebar {
     width: 300px;
     background-color: #ffffff;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sidebar h1 {
@@ -68,31 +70,97 @@ body {
     flex: 1;
     padding: 40px;
     background-color: #f9f9f9;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container h1 {
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     color: #333;
 }
 
 .container h3 {
     font-size: 20px;
     color: #555;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
-#DarkMode h5{
-    font-size: 15px;
-    margin-top: 20px;
-}
-#DarkMode{
+
+.setting-block {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    margin-bottom: 15px;
 }
-#DarkMode label{
-    margin-top: 20px;
-    margin-left: 800px;
+
+.setting-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 15px;
 }
-/* Dark Mode Styles */
+
+.setting-text h5 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.setting-text .subsubPara {
+    color: #18c99b;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider::before {
+    transform: translateX(22px);
+}
+
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
@@ -128,79 +196,19 @@ body.dark-mode .slider {
 }
 
 body.dark-mode input:checked + .slider {
-    background-color: #81c784; /* green tone for toggle in dark mode */
+    background-color: #81c784;
 }
 
 body.dark-mode .slider::before {
     background-color: #fff;
 }
 
-body.dark-mode p {
+body.dark-mode .setting-text .subsubPara {
     color: #b0b0b0;
 }
-body.dark-mode h1{
+
+body.dark-mode h1,
+body.dark-mode h3,
+body.dark-mode h5 {
     color: white;
-}
-
-.container,
-.sidebar,
-.icon1,
-body {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.container p{
-    color: #01c793;
-    font-size: 12px;
-    margin-top: -14px;
-}
-.dark-mode {
-    background-color: black !important;
-    color: white;
-}
-
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px;
-}
-
-
-.slider::before {
-  position: absolute;
-  content: "";
-  height: 26px; width: 26px;
-  left: 4px; bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-
-input:checked + .slider {
-  background-color: #4CAF50;
-}
-
-input:checked + .slider::before {
-  transform: translateX(26px);
 }
