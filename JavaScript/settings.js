@@ -1,27 +1,49 @@
-let toggleButton = document.getElementById("checkbox")
-let subsubHeading = document.getElementById("subsubHeading")
-let subsubPara= document.getElementById("subsubPara")
-let betaToggles = document.querySelectorAll(".tempBeta")
-console.log(toggleButton)
-
-
+let toggleButton = document.getElementById("checkbox");
+let subsubHeading = document.getElementById("subsubHeading");
+let subsubPara = document.querySelector("#DarkMode .subsubPara");
+let betaToggles = document.querySelectorAll(".tempBeta");
 
 function darkMod() {
     document.body.classList.toggle("dark-mode");
 
-    if (document.body.classList.contains("dark-mode")){
-        subsubHeading.textContent="Light Mode"
-        subsubPara.textContent="Click on the button to switch to Light mode"
-    } else{
-    subsubHeading.textContent="Dark Mode"
-    subsubPara.textContent="Click on the button to switch to Dark mode"
+    if (document.body.classList.contains("dark-mode")) {
+        subsubHeading.textContent = "Light Mode";
+        subsubPara.textContent = "Click on the button to switch to Light mode";
+        localStorage.setItem("theme", "dark");
+    } else {
+        subsubHeading.textContent = "Dark Mode";
+        subsubPara.textContent = "Click on the button to switch to Dark mode";
+        localStorage.setItem("theme", "light");
     }
 }
+
 function temporary() {
-    alert("This feature is still in beta. Some functionalities may not work as expected.")
+    alert("This feature is still in beta. Some functionalities may not work as expected.");
 }
 
-toggleButton.addEventListener("click",darkMod);
+function loadTheme() {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        subsubHeading.textContent = "Light Mode";
+        subsubPara.textContent = "Click on the button to switch to Light mode";
+        if (toggleButton && toggleButton.type === 'checkbox') {
+            toggleButton.checked = true;
+        }
+    } else {
+        document.body.classList.remove("dark-mode");
+        subsubHeading.textContent = "Dark Mode";
+        subsubPara.textContent = "Click on the button to switch to Dark mode";
+        if (toggleButton && toggleButton.type === 'checkbox') {
+            toggleButton.checked = false;
+        }
+    }
+}
+
+toggleButton.addEventListener("click", darkMod);
 betaToggles.forEach(toggle => {
     toggle.addEventListener("click", temporary);
 });
+
+loadTheme();
