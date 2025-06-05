@@ -333,3 +333,41 @@ body.dark-mode h3,
 body.dark-mode h5 {
     color: white;
 }
+.TitleIcon {
+    display: flex;
+}
+.TitleIcon span{
+    margin-top: 2px;
+    margin-left: 108px;
+}
+.minimize{
+    cursor: pointer;
+}
+
+body.minimizer .sidebar {
+    width: 80px;
+    padding: 20px 10px;
+    transition: width 0.3s ease;
+}
+
+body.minimizer .TitleIcon h1,
+body.minimizer .sidebar h6 {
+    display: none;
+}
+
+body.minimizer .icon1 p {
+    display: none;
+}
+
+body.minimizer .icon1 {
+    justify-content: center;
+}
+
+body.minimizer .TitleIcon {
+    justify-content: center;
+}
+
+body.minimizer .TitleIcon span {
+    margin-left: 0;
+    padding: 0 0 37px;
+}

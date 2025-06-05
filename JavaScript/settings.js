@@ -45,5 +45,27 @@ toggleButton.addEventListener("click", darkMod);
 betaToggles.forEach(toggle => {
     toggle.addEventListener("click", temporary);
 });
+const minimize = document.getElementById("minimize");
+function loadSidebar() {
+    const savedBar = localStorage.getItem("minimizer");
+    if (savedBar === "minimized") {
+        document.body.classList.add("minimizer");
+    } else {
+        document.body.classList.remove("minimizer");
+    }
+}
+
+function sidebarMin() {
+    document.body.classList.toggle("minimizer");
+
+    if (document.body.classList.contains("minimizer")) {
+        localStorage.setItem("minimizer", "minimized");
+    } else {
+        localStorage.removeItem("minimizer");
+    }
+}
+
+minimize.addEventListener("click", sidebarMin);
+loadSidebar();
 
 loadTheme();
