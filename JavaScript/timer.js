@@ -4,20 +4,16 @@ let seconds = document.getElementById('sec');
 let FullScreenContainer = document.getElementById('fullbutton');
 let EditContainer = document.getElementById('edit');
 let Sidebar = document.getElementById('Side');
-let TimerContainer = document.getElementById('timerMainContainer'); // UPDATED ID
+let TimerContainer = document.getElementById('promodoro');
+let TextaboveTimer = document.getElementById('TimerText');
 let StarTimerButt = document.getElementById('StartTimer');
 let ReSetTimer = document.getElementById('Reset');
 let Quote = document.getElementById('QuoteState');
 let QuoteBody = document.getElementById('quoateofthedaay');
 let WrittenTimer = document.getElementById('TimerTxx');
-// Removed references to TextaboveTimer and WrittenCringe as their IDs no longer exist or are replaced by h1/h5
+let WrittenCringe = document.getElementById('TheCringeText');
 let timeDisplayContainer = document.getElementById('time-display-container');
 let buttonContainer = document.getElementById('button-container');
-
-// Get references to the new H1 and H5 elements for dynamic display
-let mainTitle = document.querySelector('#timerMainContainer h1');
-let subTitle = document.querySelector('#timerMainContainer h5');
-
 
 let seccng = 0;
 let mincng = 0;
@@ -80,7 +76,7 @@ StarTimerButt.addEventListener('click', () => {
 
         StarTimerButt.innerText = "Stop Timer";
         SetTimer = setInterval(BackTimer, 1000);
-        EditContainer.style.pointerEvents = 'none';
+        EditContainer.style.pointerEvents = 'none'; 
         if (!editflag) {
             EditContainer.click();
         }
@@ -121,21 +117,23 @@ FullScreenContainer.addEventListener('click', () => {
     if (fullflag) {
         Sidebar.style.display = "none";
         QuoteBody.style.display = "none";
-        if (mainTitle) mainTitle.style.display = "none"; // Hide new H1
-        if (subTitle) subTitle.style.display = "none";   // Hide new H5
-        if (WrittenTimer) WrittenTimer.style.display = "none"; // Hide TimerTxx
+        TextaboveTimer.style.display = "none";
+        WrittenCringe.style.display = "none";
+        WrittenTimer.style.display = "none";
         EditContainer.style.display = "none";
         TimerContainer.classList.add('full-screen-mode');
+        buttonContainer.style.gridTemplateColumns = "repeat(2, 220px)";
         FullScreenContainer.classList.add('absolute-positioned');
         FullScreenContainer.innerText = "Exit Full Screen";
     } else {
         Sidebar.style.display = "flex";
         QuoteBody.style.display = "block";
-        if (mainTitle) mainTitle.style.display = "block"; // Show new H1
-        if (subTitle) subTitle.style.display = "block";   // Show new H5
-        if (WrittenTimer) WrittenTimer.style.display = "block"; // Show TimerTxx
+        TextaboveTimer.style.display = "block";
+        WrittenCringe.style.display = "block";
+        WrittenTimer.style.display = "block";
         EditContainer.style.display = "flex";
         TimerContainer.classList.remove('full-screen-mode');
+        buttonContainer.style.gridTemplateColumns = "repeat(2, 200px)";
         FullScreenContainer.classList.remove('absolute-positioned');
         FullScreenContainer.innerText = "Full Screen";
     }
@@ -152,15 +150,15 @@ EditContainer.addEventListener('click', () => {
         // Show tip alert when entering edit mode
         alert("Tip: Scroll to adjust the time settings.");
 
-        if (mainTitle) mainTitle.style.display = "none"; // Hide new H1
-        if (subTitle) subTitle.style.display = "none";   // Hide new H5
+        TextaboveTimer.style.display = "none";
         Sidebar.style.display = "none";
         FullScreenContainer.style.opacity = 0;
         FullScreenContainer.style.pointerEvents = 'none';
         StarTimerButt.style.display = "none";
         ReSetTimer.style.display = "none";
         QuoteBody.style.display = "none";
-        if (WrittenTimer) WrittenTimer.style.display = "none"; // Hide TimerTxx
+        WrittenTimer.style.display = "none";
+        WrittenCringe.style.display = "none";
         TimerContainer.classList.add('edit-mode-active');
         document.body.style.overflow = 'hidden';
         document.querySelectorAll('.time-block').forEach(block => {
@@ -170,17 +168,17 @@ EditContainer.addEventListener('click', () => {
         EditContainer.innerText = "Exit Edit Screen";
         WheelUpdown();
     } else {
-        if (mainTitle) mainTitle.style.display = "block"; // Show new H1
-        if (subTitle) subTitle.style.display = "block";   // Show new H5
+        TextaboveTimer.style.display = "block";
         Sidebar.style.display = "flex";
         FullScreenContainer.style.opacity = 1;
         FullScreenContainer.style.pointerEvents = 'auto';
         StarTimerButt.style.display = "flex";
         ReSetTimer.style.display = "flex";
         QuoteBody.style.display = "block";
-        if (WrittenTimer) WrittenTimer.style.display = "block"; // Show TimerTxx
+        WrittenCringe.style.display = "block";
+        WrittenTimer.style.display = "block";
         TimerContainer.classList.remove('edit-mode-active');
-        document.body.style.overflow = 'visible'; // Changed from hidden to visible
+        document.body.style.overflow = 'hidden';
         document.querySelectorAll('.time-block').forEach(block => {
             block.classList.remove('edit-mode');
         });
@@ -192,7 +190,7 @@ EditContainer.addEventListener('click', () => {
 
 function handleWheel(eve) {
     eve.preventDefault();
-    if (!editflag) return; // Only allow wheel if in edit mode
+    if (editflag) return; 
 
     let targetId = eve.target.id;
     let delta = eve.deltaY < 0 ? 1 : -1;
@@ -269,10 +267,21 @@ function GettingRandomQuotes(max, min) {
 
 function loadTheme() {
     const savedTheme = localStorage.getItem("theme");
+
     if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
+        subsubHeading.textContent = "Light Mode";
+        subsubPara.textContent = "Click on the button to switch to Light mode";
+        if (toggleButton && toggleButton.type === 'checkbox') {
+            toggleButton.checked = true;
+        }
     } else {
         document.body.classList.remove("dark-mode");
+        subsubHeading.textContent = "Dark Mode";
+        subsubPara.textContent = "Click on the button to switch to Dark mode";
+        if (toggleButton && toggleButton.type === 'checkbox') {
+            toggleButton.checked = false;
+        }
     }
 }
 const minimize = document.getElementById("minimize");
@@ -295,10 +304,7 @@ function sidebarMin() {
     }
 }
 
-// Ensure 'minimize' element exists before adding event listener
-if (minimize) {
-    minimize.addEventListener("click", sidebarMin);
-}
+minimize.addEventListener("click", sidebarMin);
 loadSidebar();
 
 loadTheme();
