@@ -175,7 +175,7 @@ body {
     height: 50px;
     font-size: 16px;
     font-weight: 600;
-    background-color: #69d1ae;
+    background-color: #69d1ae; /* Matched from habit.css */
     color: #ffffff;
     border: none;
     border-radius: 25px;
@@ -188,7 +188,7 @@ body {
 }
 
 .Thebuttons:hover {
-    background-color: #4bbf9b;
+    background-color: #4bbf9b; /* Matched from habit.css */
     transform: translateY(-2px);
 }
 
@@ -368,14 +368,14 @@ body.dark-mode .time-label {
 }
 
 body.dark-mode .Thebuttons {
-    background-color: #66bb6a;
-    color: #121212;
-    box-shadow: 0 4px 10px rgba(102, 187, 106, 0.3);
+    background-color: #4bbf9b;
+    color: #fff; 
+    box-shadow: 0 4px 10px rgba(75, 191, 155, 0.3); 
 }
 
 body.dark-mode .Thebuttons:hover {
-    background-color: #388e3c;
-    color: #ffffff;
+    background-color: #34a988; 
+    color: #fff; 
 }
 
 body.dark-mode #quoateofthedaay {
