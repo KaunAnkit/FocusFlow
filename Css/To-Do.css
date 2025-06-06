@@ -1,24 +1,38 @@
+/* Universal Box-Sizing and Font */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
+/* Body Styling */
 body {
     background-color: #f0f4f8;
 }
 
+/* Main Container - Flexbox layout for sidebar and main content */
 .BigContainer {
     display: flex;
     min-height: 100vh;
+    width: 100vw; /* Full viewport width for consistency */
+    background-color: #f9f9f9; /* Slightly darker background for main content area */
+    border-radius: 12px; /* Rounded corners for the entire app container */
+    overflow: hidden; /* Ensures rounded corners are visible */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
 }
 
+/* Sidebar Styling */
 .sidebar {
     width: 300px;
     background-color: #ffffff;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     padding: 20px;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 12px; /* Match BigContainer */
+    border-bottom-left-radius: 12px; /* Match BigContainer */
 }
 
 .sidebar h1 {
@@ -34,6 +48,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* UI Icons/Navigation */
 .UI {
     display: flex;
     flex-direction: column;
@@ -45,9 +60,16 @@ body {
     align-items: center;
     padding: 10px;
     border-radius: 8px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease-in-out;
     cursor: pointer;
 }
+
+/* Active To-Do List link styling */
+.icon1:nth-child(2) { /* Assuming "To-Do List" is the second .icon1 in UI */
+    background-color: #e0f7f1;
+    color: #4bbf9b;
+}
+
 
 .icon1 span {
     font-size: 22px;
@@ -64,10 +86,13 @@ body {
     background-color: #e0f7f1;
 }
 
+/* Main Content Container */
 .container {
     flex: 1;
     padding: 40px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Match BigContainer background */
+    border-top-right-radius: 12px; /* Match BigContainer */
+    border-bottom-right-radius: 12px; /* Match BigContainer */
 }
 
 .container h1 {
@@ -75,29 +100,33 @@ body {
     margin-bottom: 20px;
     color: #333;
 }
+
 .container h5{
     font-style: italic;
     color: #777;
     margin-bottom: 20px;
 }
 
+/* Task Input Section */
 .Taskinput {
+    display: flex; /* Use flexbox for input and button alignment */
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
 }
 
 .Taskinput input {
-    width: 500px;
+    flex-grow: 1; /* Allow input to grow and take available space */
     height: 45px;
     padding: 0 15px;
     font-size: 16px;
     border: 0;
-    border-bottom: 2px solid #69d1ae;
+    border-bottom: 2px solid #69d1ae; /* Consistent green border */
     border-radius: 8px;
     outline: none;
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
     background-color: #fff;
+    max-width: 500px; /* Limit max width for input */
 }
 
 .Taskinput input:focus {
@@ -107,25 +136,28 @@ body {
 
 .Taskinput button {
     font-weight: 600;
-    margin: 10px 0;
     height: 40px;
-    width: 90px;
-    background-color: #69d1ae;
+    width: 120px; /* Slightly wider button for "Add Task" */
+    background-color: #69d1ae; /* Consistent green button color */
+    color: #ffffff;
     border: none;
     border-radius: 30px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(105, 209, 174, 0.3); /* Green shadow for buttons */
 }
 
 .Taskinput button:hover {
-    background-color: #4bbf9b;
+    background-color: #4bbf9b; /* Darker green on hover */
 }
 
+/* Task List */
 .TaskList {
     margin-top: 20px;
+    margin-bottom: 20px; /* Add some space below the list before input */
 }
 
 #ListOfTask {
@@ -143,7 +175,7 @@ body {
     font-size: 16px;
     color: #333;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #ListOfTask li:hover {
@@ -154,7 +186,7 @@ body {
     margin-right: 15px;
     min-width: 20px;
     height: 20px;
-    border: 2px solid #69d1ae;
+    border: 2px solid #69d1ae; /* Consistent green border for checkbox */
     border-radius: 50%;
     appearance: none;
     cursor: pointer;
@@ -190,7 +222,7 @@ body {
 .delete-btn {
     height: 36px;
     width: 36px;
-    background-color: #69d1ae;
+    background-color: #69d1ae; /* Consistent green for edit button */
     border-radius: 8px;
     border: none;
     color: white;
@@ -206,13 +238,44 @@ body {
     transform: scale(1.1);
 }
 
+.delete-btn {
+    background-color: #e57373; /* Red for delete button */
+}
+
 .delete-btn:hover {
-    background-color: #e57373;
+    background-color: #d32f2f; /* Darker red on hover */
     transform: scale(1.1);
 }
+
+/* Sidebar Minimizer */
+.TitleIcon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.TitleIcon span{
+    margin-top: 2px;
+    cursor: pointer;
+    color: #555;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.TitleIcon span:hover {
+    color: #333;
+}
+
+/* Dark Mode Styles */
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
+}
+
+body.dark-mode .BigContainer {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode .container {
@@ -240,38 +303,82 @@ body.dark-mode .icon1:hover {
     background-color: #333333;
 }
 
-body.dark-mode .slider {
-    background-color: #555;
+body.dark-mode .icon1:nth-child(2) { /* Active "To-Do List" in dark mode */
+    background-color: #2f4f4f; /* Darker green */
+    color: #81c784; /* Lighter green text */
 }
 
-body.dark-mode input:checked + .slider {
-    background-color: #81c784;
+body.dark-mode .Taskinput input {
+    background-color: #2c2c2c; /* Darker input background */
+    color: #f0f0f0;
+    border-color: #4bbf9b; /* Consistent green border */
 }
 
-body.dark-mode .slider::before {
-    background-color: #fff;
+body.dark-mode .Taskinput input:focus {
+    box-shadow: 0 0 6px rgba(75, 191, 155, 0.4);
 }
 
-body.dark-mode .setting-text .subsubPara {
-    color: #b0b0b0;
+body.dark-mode .Taskinput button {
+    background-color: #4bbf9b; /* Consistent green button color */
+    color: #fff;
+}
+
+body.dark-mode .Taskinput button:hover {
+    background-color: #34a988; /* Consistent darker green on hover */
+}
+
+body.dark-mode #ListOfTask li {
+    background-color: #2a2a2a; /* Darker list item background */
+    color: #e0e0e0;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode #ListOfTask li:hover {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .checkbox {
+    border-color: #69d1ae; /* Consistent green border */
+}
+
+body.dark-mode .checkbox:checked {
+    background-color: #69d1ae;
+}
+
+body.dark-mode .checkbox:checked::before {
+    color: #fff; /* Ensure checkmark is white */
+}
+
+body.dark-mode .edit-btn {
+    background-color: #4bbf9b; /* Consistent green for edit button */
+    color: white;
+}
+
+body.dark-mode .delete-btn {
+    background-color: #e57373; /* Red for delete button */
+    color: white;
+}
+
+body.dark-mode .delete-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
 }
 
 body.dark-mode h1,
 body.dark-mode h3,
-body.dark-mode h5 {
-    color: white;
-}
-.TitleIcon {
-    display: flex;
-}
-.TitleIcon span{
-    margin-top: 2px;
-    margin-left: 108px;
-}
-.minimize{
-    cursor: pointer;
+body.dark-mode h5,
+body.dark-mode p {
+    color: #f0f0f0;
 }
 
+body.dark-mode .TitleIcon span {
+    color: #f0f0f0;
+}
+
+body.dark-mode .TitleIcon span:hover {
+    color: #cccccc;
+}
+
+/* Sidebar Minimizer */
 body.minimizer .sidebar {
     width: 80px;
     padding: 20px 10px;
@@ -299,105 +406,200 @@ body.minimizer .TitleIcon span {
     margin-left: 0;
     padding: 0 0 37px;
 }
-body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+    .BigContainer {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        border-radius: 0;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .sidebar h1 {
+        font-size: 22px;
+    }
+
+    .sidebar h6 {
+        display: none;
+    }
+
+    .UI {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .icon1 {
+        padding: 8px 12px;
+        font-size: 14px;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .icon1 p {
+        margin-left: 8px;
+    }
+
+    .TitleIcon {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .TitleIcon h1 {
+        margin-right: 15px;
+    }
+
+    .TitleIcon span {
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 20px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .container h5 {
+        font-size: 14px;
+    }
+
+    .Taskinput {
+        flex-direction: column; /* Stack input and button */
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .Taskinput input {
+        width: 100%;
+        max-width: none;
+    }
+
+    .Taskinput button {
+        width: 100%;
+        max-width: 200px; /* Limit button width for better appearance */
+        align-self: center; /* Center the button when stacked */
+        margin-top: 0; /* Remove extra margin */
+    }
+
+    #ListOfTask li {
+        padding: 10px 14px;
+        font-size: 15px;
+    }
+
+    .checkbox {
+        min-width: 18px;
+        height: 18px;
+        margin-right: 10px;
+    }
+
+    .checkbox:checked::before {
+        font-size: 12px;
+        left: 3px;
+        top: -1px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        height: 32px;
+        width: 32px;
+    }
+
+    body.minimizer .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    body.minimizer .icon1 p {
+        display: block;
+    }
+
+    body.minimizer .icon1 {
+        justify-content: center;
+    }
+
+    body.minimizer .TitleIcon h1 {
+        display: block;
+    }
+
+    body.minimizer .TitleIcon span {
+        padding: 0;
+    }
 }
 
-/* Container */
-body.dark-mode .container {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-}
+/* Specific adjustments for very small mobile screens */
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 10px;
+    }
 
-/* Sidebar */
-body.dark-mode .sidebar {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    box-shadow: 2px 0 10px rgba(255, 255, 255, 0.05);
-}
+    .UI {
+        gap: 5px;
+    }
 
-body.dark-mode .sidebar h1,
-body.dark-mode .sidebar h6 {
-    color: #ffffff;
-}
+    .icon1 {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
 
-body.dark-mode .icon1 span,
-body.dark-mode .icon1 p {
-    color: #cccccc;
-}
+    .icon1 p {
+        font-size: 14px;
+        margin-left: 6px;
+    }
 
-body.dark-mode .icon1:hover {
-    background-color: #333333;
-}
+    .container {
+        padding: 15px;
+    }
 
-/* Input and Button */
-body.dark-mode .Taskinput input {
-    background-color: #2a2a2a;
-    color: #ffffff;
-    border-bottom: 2px solid #81c784;
-}
+    .container h1 {
+        font-size: 20px;
+    }
 
-body.dark-mode .Taskinput input:focus {
-    border-color: #66bb6a;
-    box-shadow: 0 0 6px rgba(129, 199, 132, 0.4);
-}
+    .container h5 {
+        font-size: 12px;
+    }
 
-body.dark-mode .Taskinput button {
-    background-color: #81c784;
-    color: #121212;
-}
+    .Taskinput {
+        gap: 10px;
+    }
 
-body.dark-mode .Taskinput button:hover {
-    background-color: #66bb6a;
-}
+    .Taskinput button {
+        max-width: 180px;
+    }
 
-/* Task List Items */
-body.dark-mode #ListOfTask li {
-    background-color: #2b2b2b;
-    color: #ffffff;
-    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
-}
+    #ListOfTask li {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
 
-body.dark-mode #ListOfTask li:hover {
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-}
+    .checkbox {
+        min-width: 16px;
+        height: 16px;
+        margin-right: 8px;
+    }
 
-body.dark-mode .checkbox {
-    border: 2px solid #81c784;
-}
+    .checkbox:checked::before {
+        font-size: 10px;
+        left: 3px;
+        top: -1px;
+    }
 
-body.dark-mode .checkbox:checked {
-    background-color: #81c784;
-}
-
-body.dark-mode .checkbox:checked::before {
-    color: #121212;
-}
-
-/* Buttons */
-body.dark-mode .edit-btn {
-    background-color: #4caf50;
-    color: white;
-}
-
-body.dark-mode .edit-btn:hover {
-    background-color: #388e3c;
-}
-
-body.dark-mode .delete-btn {
-    background-color: #e57373;
-    color: white;
-}
-
-body.dark-mode .delete-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* Misc text */
-body.dark-mode h1,
-body.dark-mode h3,
-body.dark-mode h5,
-body.dark-mode p {
-    color: #f0f0f0;
+    .edit-btn,
+    .delete-btn {
+        height: 28px;
+        width: 28px;
+    }
 }
