@@ -335,3 +335,34 @@ body.dark-mode #promodoro.full-screen-mode,
 body.dark-mode #promodoro.edit-mode-active {
     background-color: #1e1e1e;
 }
+
+body.minimizer .sidebar {
+    width: 80px;
+    padding: 20px 10px;
+    transition: width 0.3s ease;
+}
+
+body.minimizer .TitleIcon h1,
+body.minimizer .sidebar h6 {
+    display: none;
+}
+
+body.minimizer .icon1 p {
+    display: none;
+}
+
+body.minimizer .icon1 {
+    justify-content: center;
+}
+
+body.minimizer .TitleIcon {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+body.minimizer .TitleIcon span {
+    margin-left: 0;
+    padding: 0;
+    font-size: 24px;
+    display: block;
+}
