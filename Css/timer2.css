@@ -33,17 +33,34 @@ body {
     border-bottom-left-radius: 12px;
 }
 
-.sidebar h1 {
+.TitleIcon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.TitleIcon h1 {
     font-size: 24px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.TitleIcon span {
+    cursor: pointer;
+    color: #555;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
 }
 
 .sidebar h6 {
     font-style: italic;
     color: #777;
     margin-bottom: 20px;
+    margin-top: 0;
+    text-align: left;
 }
 
 .UI {
@@ -88,7 +105,7 @@ body {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     position: relative;
-    overflow: hidden; /* To handle full screen mode */
+    overflow: hidden;
 }
 
 #TimerText {
@@ -185,7 +202,6 @@ body {
     line-height: 1.5;
 }
 
-/* Full Screen Mode */
 #promodoro.full-screen-mode {
     position: fixed;
     top: 0;
@@ -206,7 +222,6 @@ body {
     z-index: 1000;
 }
 
-/* Edit Mode */
 #promodoro.edit-mode-active {
     position: fixed;
     top: 0;
@@ -221,8 +236,8 @@ body {
 }
 
 .time-block.edit-mode {
-    transform: scale(1.1); /* Slightly enlarge in edit mode */
-    border: 2px solid #4bbf9b; /* Highlight with a border */
+    transform: scale(1.1);
+    border: 2px solid #4bbf9b;
 }
 
 #edit.absolute-positioned {
@@ -232,7 +247,6 @@ body {
     z-index: 1000;
 }
 
-/* Dark Mode */
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
@@ -288,7 +302,7 @@ body.dark-mode .time-block {
 }
 
 body.dark-mode .time {
-    color: #81c784; /* Green for numbers in dark mode */
+    color: #81c784;
 }
 
 body.dark-mode .time-label {
@@ -321,17 +335,3 @@ body.dark-mode #promodoro.full-screen-mode,
 body.dark-mode #promodoro.edit-mode-active {
     background-color: #1e1e1e;
 }
-
-.TitleIcon {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.TitleIcon span {
-    margin-top: 2px;
-    cursor: pointer;
-    color: #555; 
-}
-
