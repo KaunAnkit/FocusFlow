@@ -377,3 +377,79 @@ body.minimizer .TitleIcon span {
     margin-left: 0;
     padding: 0 0 37px;
 }
+/* Main Container */
+body.dark-mode .BigContainer {
+    background-color: #121212;
+}
+
+/* Pomodoro Section */
+body.dark-mode #promodoro {
+    background-color: #1e1e1e;
+}
+
+/* Headings and Text */
+body.dark-mode #TimerText,
+body.dark-mode #TheCringeText,
+body.dark-mode #TimerTxx,
+body.dark-mode #QuoteHead,
+body.dark-mode #QuoteState {
+    color: #e0e0e0;
+}
+
+/* Time Display */
+body.dark-mode .time {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+body.dark-mode .time:hover {
+    background-color: #3a3a3a;
+}
+
+/* Labels */
+body.dark-mode .time-label {
+    color: #cccccc;
+}
+
+/* Buttons */
+body.dark-mode .Thebuttons {
+    background-color: #66bb6a;
+    color: #121212;
+}
+
+body.dark-mode .Thebuttons:hover {
+    background-color: #388e3c;
+    color: #ffffff;
+}
+
+/* Quote Section */
+body.dark-mode #quoateofthedaay {
+    background-color: #2b2b2b;
+}
+
+/* Arrows in Edit Mode */
+body.dark-mode .up-arrow,
+body.dark-mode .down-arrow {
+    filter: brightness(0.9);
+}
+
+/* Fullscreen/Edit mode containers */
+body.dark-mode #promodoro.full-screen-mode,
+body.dark-mode #promodoro.edit-mode-active {
+    background-color: #1e1e1e;
+}
+
+/* Toggle minimizer icon */
+body.dark-mode .material-symbols-outlined {
+    color: #f0f0f0;
+}
+
+/* Sidebar active highlight */
+body.dark-mode #PomoTimer {
+    background-color: #2f4f4f;
+}
+
+body.dark-mode .icon1:hover {
+    background-color: #333333;
+}
+
